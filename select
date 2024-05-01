@@ -1,0 +1,24 @@
+-- Название и продолжительность самого длительного трека.
+SELECT NameTrack, Durarion 
+FROM Tracks 
+WHERE Durarion = (SELECT MAX(Durarion) FROM Tracks);
+
+-- Название треков, продолжительность которых не менее 3,5 минут.
+SELECT NameTrack 
+FROM Tracks 
+WHERE Durarion >= 210; -- 3.5 минуты * 60 секунд = 210 секунд
+
+-- Названия сборников, вышедших в период с 2018 по 2020 год включительно.
+SELECT NameCollect 
+FROM Collections 
+WHERE YearCollect BETWEEN 2018 AND 2020;
+
+-- Исполнители, чьё имя состоит из одного слова.
+SELECT NameExecut 
+FROM Executors 
+WHERE NameExecut NOT LIKE '% %'; -- Имя не содержит пробелов
+
+-- Название треков, которые содержат слово «мой» или «my».
+SELECT NameTrack 
+FROM Tracks 
+WHERE LOWER(NameTrack) LIKE '%мой%' OR LOWER(NameTrack) LIKE '%my%';
